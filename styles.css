@@ -1,0 +1,17 @@
+html {
+    margin: 0px;
+    background-color: gray;
+}
+
+header div {
+    display: inline-block;
+    margin: auto;
+    height: 20px;
+    width: 25%;
+    background-color: aqua;
+}
+
+canvas {
+    margin: 0;
+}
+

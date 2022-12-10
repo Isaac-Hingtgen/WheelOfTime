@@ -67,7 +67,7 @@ class World {
         player.updateHitboxLocation();
         player.updateAttackHitbox();
 //--------------------------------debugging--------------------------------------------------------------        
-     this.context.fillRect(player.hitBox.left,player.hitBox.top,player.hitBox.width,player.hitBox.height);
+     // this.context.fillRect(player.hitBox.left,player.hitBox.top,player.hitBox.width,player.hitBox.height);
 
         // let top = player.attackHitbox.top;
         // let left = player.attackHitbox.left;
@@ -148,13 +148,12 @@ class Person {
         this.initialY = initialY;
         const pHeight = this.height = canvasHeight / 10;
         const pWidth = this.width = canvasWidth / 20;
-        const size = 0.085;
 
         this.PNG = {
             width: 31.0,
             height: 31.0,
-            marginTB: 1,
-            marginLR: 15,
+            marginTB: 8,
+            marginLR: 10,
             row: 0,
             col: 0
         }
@@ -162,8 +161,8 @@ class Person {
         this.hitBox = {
             marginTB: pHeight * this.PNG.marginTB / this.PNG.height,
             marginLR: pWidth * this.PNG.marginLR / this.PNG.width,
-            width: pWidth - pWidth * this.PNG.marginLR / this.PNG.width,
-            height: pHeight - pHeight * this.PNG.marginTB / this.PNG.height
+            width: pWidth - 2 * pWidth * this.PNG.marginLR / this.PNG.width,
+            height: pHeight - 2 * pHeight * this.PNG.marginTB / this.PNG.height
         }
         this.updateHitboxLocation();
 
@@ -173,14 +172,15 @@ class Person {
         
         this.xp = initialX;
         this.yp = initialY; 
+        this.speed = canvasWidth / 900;
         this.xvelocity = 0;
         this.yvelocity = 0;
-        this.g = 0.3;
-        this.airResistance = 0.04;
+        this.g = canvasHeight / 2000;
+        this.airResistance = canvasWidth / 30000;
         this.friction = 0.25;
         this.acceleration = 0;
         this.jumpHeight = canvasHeight / 70;
-        this.bounceMultiplier = 0.3;
+        this.bounceMultiplier = canvasHeight / 2000;
         this.onGround = false;
         this.secondJump = true;
         this.isRunning = false;
@@ -244,13 +244,13 @@ class Person {
     }
 
     goRight() {
-        this.xvelocity = 1;
+        this.xvelocity = this.speed;
         this.facingRight = true;
         this.isRunning = true;
     }
 
     goLeft() {
-        this.xvelocity = -1;
+        this.xvelocity = -this.speed;
         this.facingRight = false;  
         this.isRunning = true;
     }

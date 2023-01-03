@@ -6,14 +6,14 @@ Goal: hit the other player downwards off the platform.
 
 Controls:
 
-p1:
+player 1:
 A: move left
 D: move right
 Space: jump
 W: normal attack
 S: downwards attack (much larger hitbox)
 
-p2: (requires keypad)
+player 2: (requires keypad)
 4: move left
 6: move right
 Enter: jump
